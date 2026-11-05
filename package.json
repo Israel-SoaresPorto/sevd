@@ -7,7 +7,8 @@
     "dev": "pnpm -r --parallel run dev",
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
-    "typecheck": "pnpm -r run typecheck"
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,9 @@
     "node": ">=22"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "typescript": "^7.0.2",
+    "typescript-eslint": "^8.72.1",
     "vitest": "^5.1.0"
   }
 }
