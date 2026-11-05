@@ -62,13 +62,13 @@
 
 > Regra da fase: **sem** React, Dexie, Hono ou DOM. Testes unitários obrigatórios em `packages/core/tests/`.
 
-### [ ] T-010 — Tipos e constantes
+### [ X ] T-010 — Tipos e constantes
 - **Objetivo:** contratos e limites compartilhados.
 - **Escopo:** `types.ts` (A§4.1: `ColorToken`, `CategoryIcon`, `SyncFields`, `Bookmark`, `Category`, `UserPreferences`, `BackupPayloadV1`, `MetadataDTO`), `constants.ts` (limites 200/280/50/20/5, 8 cores, 24 ícones, `DEFAULT_PREFERENCES`, lista de tracking params), `index.ts` barrel.
 - **Fora do escopo:** tipo `Tag`; qualquer lógica.
 - **Aceite:** tipos exatamente como A§4.1; nenhum `Tag`; `pnpm --filter @sevd/core typecheck` limpo.
 
-### [ ] T-011 — Validação de URL
+### [ X ] T-011 — Validação de URL
 - **Escopo:** `url-validator.ts`: `isValidHttpUrl`, `extractDomain` (hostname minúsculo, sem `www.`), `InvalidUrlError`.
 - **Refs:** RF-04.
 - **Dependências:** T-010.
