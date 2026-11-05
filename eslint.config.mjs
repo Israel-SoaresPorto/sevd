@@ -1,11 +1,12 @@
 import js from "@eslint/js";
+import tseslint from "typescript-eslint";
 
 const recommendedRules = { ...js.configs.recommended.rules };
 delete recommendedRules["no-unassigned-vars"];
 delete recommendedRules["preserve-caught-error"];
 
 export default [
-  // 1. Arquivos ignorados
+  // 1. Ignored files and directories
   {
     ignores: [
       "**/node_modules/**",
@@ -15,12 +16,24 @@ export default [
     ],
   },
 
-  // 2. Regras globais recomendadas
+  // 2. Typescript parser for files with .ts and .tsx extensions
+  {
+      files: ["**/*.{ts,tsx}"],
+      languageOptions: {
+        parser: tseslint.parser,
+        parserOptions: {
+          ecmaVersion: "latest",
+          sourceType: "module",
+        },
+      },
+    },
+
+  // 3. Recommended rules for all files
   {
     rules: recommendedRules,
   },
 
-  // 3. packages/core: puro, sem react, dexie, hono, @sevd/web, @sevd/api, nem DOM
+  // 4. packages/core: pure package. forbidden imports: react, dexie, hono, @sevd/web, @sevd/api. Forbidden globals: window, document
   {
     files: ["packages/core/**/*.{ts,tsx,js,jsx}"],
     rules: {
@@ -71,7 +84,7 @@ export default [
     },
   },
 
-  // 4. apps/api: hono e @sevd/core. Proibido: react, dexie, @sevd/web
+  // 4. apps/api: hono and @sevd/core. Forbidden imports: react, dexie, @sevd/web
   {
     files: ["apps/api/**/*.{ts,tsx,js,jsx}"],
     rules: {
@@ -103,7 +116,7 @@ export default [
     },
   },
 
-  // 5. apps/web/src/ui: react, lucide-react, @sevd/core. Proibido: dexie, data, services, features, @sevd/api
+  // 5. apps/web/src/ui: react, lucide-react, @sevd/core. Forbidden imports: dexie, @sevd/api, data, services, features
   {
     files: ["apps/web/src/ui/**/*.{ts,tsx,js,jsx}"],
     rules: {
@@ -139,7 +152,7 @@ export default [
     },
   },
 
-  // 6. apps/web/src/data: dexie, @sevd/core. Proibido: react, services, features, ui, @sevd/api
+  // 6. apps/web/src/data: dexie, @sevd/core. Forbidden imports: react, services, features, ui, @sevd/api
   {
     files: ["apps/web/src/data/**/*.{ts,tsx,js,jsx}"],
     rules: {
@@ -175,7 +188,7 @@ export default [
     },
   },
 
-  // 7. apps/web/src/services: @sevd/core, data. Proibido: react, features, ui, @sevd/api
+  // 7. apps/web/src/services: @sevd/core, data. Forbidden imports: react
   {
     files: ["apps/web/src/services/**/*.{ts,tsx,js,jsx}"],
     rules: {
@@ -209,7 +222,7 @@ export default [
     },
   },
 
-  // 8. apps/web/src/features: react, @sevd/core, services, ui. Proibido: data/local/db direto, @sevd/api
+  // 8. apps/web/src/features: react, @sevd/core, services, ui. Forbidden imports: data/local/db direto, @sevd/api
   {
     files: ["apps/web/src/features/**/*.{ts,tsx,js,jsx}"],
     rules: {
