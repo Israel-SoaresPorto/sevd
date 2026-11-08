@@ -125,11 +125,11 @@
 - **Dependências:** T-020.
 - **Aceite (testes):** corte exato em 64 KB; para ao achar `</head>`; `Content-Type` não-HTML cancela o body; entidades (`&amp;`, `&#39;`) decodificadas; favicon relativo vira absoluto contra `finalUrl`; sem regex ingênua que quebre com atributos em ordem diferente.
 
-### [ ] T-023 — Rota `GET /api/metadata`
-- **Escopo:** `routes/metadata.ts` unindo guard + parser; timeout total 3 s (`AbortSignal.timeout(3000)`); resposta `{ title, faviconUrl, finalUrl }`; `Cache-Control: public, max-age=3600, s-maxage=86400`; bloqueio/timeout/erro de site → `200` com `title: null`; `url` ausente/inválida → `400`.
+### [ X ] T-023 — Rota `GET /api/metadata`
+- **Escopo:** `routes/metadata.ts` unindo guard + parser; timeout total 3 s (`AbortSignal.timeout(3000)`); resposta `{ title, faviconUrl, finalUrl }`; `Cache-Control: public, max-age=3600, s-maxage=86400`; falhas respondem com erro correspondente e `Cache-Control: no-store` (D-11): `url` ausente/inválida → `400 invalid_url`; bloqueada pelo guard → `403 blocked_url`; `Content-Type` não-HTML → `415 not_html`; redirects demais → `502 too_many_redirects`; erro de rede/site → `502 fetch_failed`; timeout → `504 timeout`. Página HTML sem título → `200` com `title: null`.
 - **Refs:** PRD §4.1, RNF-5.
 - **Dependências:** T-021, T-022.
-- **Aceite (testes):** caminho feliz; timeout → `title: null`; URL privada → erro tratado sem vazar detalhes internos; header de cache presente.
+- **Aceite (testes):** caminho feliz; timeout → `504`; URL privada → `403` tratado sem vazar detalhes internos; header de cache presente no sucesso e `no-store` nos erros.
 
 ### [ ] T-024 — Rota `GET /api/favicon`
 - **Escopo:** `routes/favicon.ts` (A§7.5): guard com 3 saltos e 2 s; aceita `image/*` (ou `octet-stream` terminando em `.ico`); teto de 256 KB (excedeu → `404`); headers `Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'`, `X-Content-Type-Options: nosniff`, `Cache-Control: public, max-age=604800, s-maxage=2592000, immutable`; falha → `404` com `max-age=3600`.
