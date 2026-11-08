@@ -24,6 +24,7 @@ Este documento registra as decisões de arquitetura e produto do **SEVD**, mante
 | ID | Decisão | Motivação / Contexto | Data |
 | :--- | :--- | :--- | :--- |
 | **D-09** | **Adoção do Zod em substituição ao Valibot** | Adotado o **Zod** para validação estrutural do arquivo de backup ([backup.schema.ts](file:///mnt/nvme0n1p6/israel/Projetos/sevd/packages/core/src/schemas/backup.schema.ts)) em substituição ao Valibot. O Zod é o padrão da indústria com maior estabilidade e ergonomia no ecossistema TypeScript. Como o schema é carregado sob demanda (*dynamic import*) exclusivamente no fluxo de importação na rota `/settings`, a diferença de tamanho de bundle tem impacto nulo no carregamento inicial do PWA e na latência de captura da rota `/save`. | 2026-11-08 |
+| **D-10** | **`URL` global no lugar de `node:url` no core** | `@sevd/core` deve ser puro e rodar em Workers/navegador; removido `import { URL } from "node:url"` de `url-normalizer.ts` e `url-validator.ts`. O `eslint.config.mjs` passou a declarar os globais Web (`URL`, `fetch`, etc.) para `no-undef`. | 2026-11-08 |
 
 ---
 

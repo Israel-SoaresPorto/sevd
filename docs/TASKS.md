@@ -109,7 +109,7 @@
 
 ## FASE 2 — Serverless (`@sevd/api`)
 
-### [ ] T-020 — App Hono base
+### [ X ] T-020 — App Hono base
 - **Escopo:** `apps/api/src/index.ts` exportando `export const app = new Hono().basePath('/api')` **e** `export default app` (o app Hono já é um handler `fetch` válido para Cloudflare Workers; **não criar adaptadores** como `functions/api/[[route]].ts`); rota `GET /api/health` (mantida; serve de verificação de deploy na T-063); filtro de origem como middleware (`Sec-Fetch-Site: cross-site` → `403`).
 - **Fora do escopo:** metadata/favicon.
 - **Dependências:** T-001.
