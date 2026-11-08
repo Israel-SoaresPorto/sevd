@@ -80,7 +80,7 @@
 - **Dependências:** T-010, T-011.
 - **Aceite (testes):** `http://` ≡ `https://`; remove só `www.` (preserva `www2.`, `m.`); remove `:80`/`:443`; preserva `#/` e `#!`, remove `#secao`; remove `utm_*`, `fbclid`, `gclid`, `dclid`, `msclkid`, `twclid`, `igshid`, `mc_cid`, `mc_eid`, `ref`, `ref_src`, `si` (case-insensitive) e **mantém** outros params; ordena query; `https://exemplo.com/` → `https://exemplo.com`; `…/docs/` → `…/docs`; idempotente (`normalize(normalize(x)) === normalize(x)`).
 
-### [ ] T-013 — Extração de compartilhamento
+### [ X ] T-013 — Extração de compartilhamento
 - **Escopo:** `share-extractor.ts` (A§4.3): usa `url` se válida; senão primeira URL em `text` (limpando `. , ; )` finais); resto do `text` vira nota (trim, espaços colapsados, ≤ 280).
 - **Refs:** RF-01, RF-04.
 - **Dependências:** T-010, T-011.

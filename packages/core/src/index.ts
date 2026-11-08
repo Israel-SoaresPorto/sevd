@@ -5,3 +5,4 @@ export * from './constants';
 export * from './errors';
 export * from './url-validator';
 export * from './url-normalizer';
+export * from './share-extractor';
