@@ -115,7 +115,7 @@
 - **Dependências:** T-001.
 - **Aceite (testes via `app.request`):** `cross-site` → 403; `same-origin`/ausente → passa.
 
-### [ ] T-021 — Guarda anti-SSRF
+### [ X ] T-021 — Guarda anti-SSRF
 - **Escopo:** `lib/ssrf-guard.ts`: `assertSafeUrl`, `safeFetchWithRedirects(url, { maxHops, signal })` (A§7.3). Esquema só `http(s)`, portas só 80/443/omitida; bloqueia `localhost`, `*.localhost`, `*.local`, `*.internal`, `metadata.google.internal` e IP literal em todas as faixas listadas (inclui `100.64.0.0/10`, `0.0.0.0/8`, `::ffff:0:0/96`); `redirect: 'manual'` com revalidação de cada `Location`; excede `maxHops` → erro.
 - **Dependências:** T-020, T-011.
 - **Aceite (testes, com `fetch` mockado):** cada faixa bloqueada; redirect público→privado bloqueado; 6º salto aborta (metadata) e 4º (favicon); URL relativa em `Location` resolvida corretamente.
