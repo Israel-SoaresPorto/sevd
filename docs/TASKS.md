@@ -74,7 +74,7 @@
 - **Dependências:** T-010.
 - **Aceite (testes):** aceita `http`/`https`; rejeita `ftp:`, `javascript:`, `data:`, strings vazias e malformadas; domínio de `https://www.Exemplo.com/x` = `exemplo.com`.
 
-### [ ] T-012 — Normalizador de URL
+### [ X ] T-012 — Normalizador de URL
 - **Escopo:** `url-normalizer.ts` com `normalizeUrl()` nas **6 etapas exatas** (A§4.2). Remove credenciais embutidas.
 - **Refs:** PRD §3.2.
 - **Dependências:** T-010, T-011.
