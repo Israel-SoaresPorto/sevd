@@ -92,9 +92,9 @@
 - **Dependências:** T-010.
 - **Aceite (testes):** `"programação"` casa com `"programacao"`; hash estável (mesmo nome → mesma cor) e nunca `zinc`.
 
-### [ ] T-015 — Schema de backup (Valibot)
-- **Escopo:** `backup.schema.ts` para `BackupPayloadV1` (estágio 1, A§5.2-C): `version === 1`, arrays `bookmarks` e `categories`, tipos primitivos.
-- **Dependências:** T-010. (Única tarefa que usa `valibot`; aprovar a dependência.)
+### [ X ] T-015 — Schema de backup (Zod)
+- **Escopo:** `backup.schema.ts` para `BackupPayloadV1` (estágio 1, A§5.2-C): `version === 1`, arrays `bookmarks` e `categories`, tipos primitivos. Validado via Zod (Decisão D-09).
+- **Dependências:** T-010.
 - **Aceite (testes):** payload válido passa; `version: 2`, array ausente ou tipo errado falham com erro legível.
 
 ### [ ] T-016 — Sanitizador e mesclagem LWW

@@ -9,3 +9,4 @@ export * from './share-extractor';
 export * from './color-hash';
 export * from './text-search';
 export * from './utils/normalizers';
+export * from './schemas/backup.schema';

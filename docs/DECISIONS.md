@@ -1,0 +1,35 @@
+# DECISIONS.md — Registro de Decisões Técnicas e de Arquitetura
+
+Este documento registra as decisões de arquitetura e produto do **SEVD**, mantendo o histórico de trade-offs e evolução técnica.
+
+---
+
+## 1. Decisões Iniciais (MVP v1.0)
+
+| ID | Decisão | Motivação / Contexto |
+| :--- | :--- | :--- |
+| **D-01** | **PWA Local-First com Hono Serverless** | O produto é um PWA local-first com banco no navegador (IndexedDB via Dexie.js) apoiado por funções serverless stateless no MVP (`v1.0`), preparando a base para sincronização e backup em nuvem na `v1.1`. |
+| **D-02** | **Captura Dual (Externa `/save` vs Interna Modal)** | Captura dividida em: externa via rota enxuta `/save` (para Web Share Target e Bookmarklet com `source=bookmarklet`) e interna via Modal no Dashboard (Colar/Novo link e Editar, sem transição de rota desnecessária). |
+| **D-03** | **Preferências em `localStorage`** | Configurações de UI unificadas em `localStorage` (`theme`, `viewMode`, `sortBy`, `fetchMetadata`, `faviconMode`, timestamps de backup); aplicação anti-FOUC de tema por script inline no `<head>`. |
+| **D-04** | **`navigator.storage.persist()`** | Solicitação de armazenamento persistente para evitar que o navegador descarte o IndexedDB sob pressão de espaço de disco. |
+| **D-05** | **Backup Local Manual (P0 no v1.0)** | Exportação e importação manual sob demanda em Configurações (`.json` com lápides e `.md` legível), sem dependência inicial de nuvem ou autenticação. |
+| **D-06** | **Atalhos de Teclado Internos** | Atalhos focados no contexto do app (`/` e `Ctrl+K` para busca, `Ctrl+Enter` para salvar, `Esc` para fechar modais/dropdowns). |
+| **D-07** | **Soft Delete com Lápides sem Índices Únicos Físicos (`&`) no Dexie** | Permite que registros excluídos logicamente coexistam com novos registros da mesma URL canônica; ressurreição transparente e cascata de `updatedAt` ao gerenciar categorias; tags como `string[]` leve no próprio link sem tabela dedicada; lista fechada de tracking params para normalização canônica. |
+| **D-08** | **Monorepo com `pnpm workspaces` e TanStack Router** | Isolamento de fronteiras estritas entre `@sevd/core`, `@sevd/api` e `@sevd/web`; roteamento client-side tipado via History API; servidor serverless Hono desacoplado e publicável no Cloudflare Workers. |
+
+---
+
+## 2. Decisões Novas
+
+| ID | Decisão | Motivação / Contexto | Data |
+| :--- | :--- | :--- | :--- |
+| **D-09** | **Adoção do Zod em substituição ao Valibot** | Adotado o **Zod** para validação estrutural do arquivo de backup ([backup.schema.ts](file:///mnt/nvme0n1p6/israel/Projetos/sevd/packages/core/src/schemas/backup.schema.ts)) em substituição ao Valibot. O Zod é o padrão da indústria com maior estabilidade e ergonomia no ecossistema TypeScript. Como o schema é carregado sob demanda (*dynamic import*) exclusivamente no fluxo de importação na rota `/settings`, a diferença de tamanho de bundle tem impacto nulo no carregamento inicial do PWA e na latência de captura da rota `/save`. | 2026-11-08 |
+
+---
+
+## 3. Ideias Adiadas (Backlog v1.1+)
+
+- Sincronização multi-dispositivo ponta a ponta com autenticação e servidor dedicado.
+- Lixeira visual com visualização e restauração manual de lápides.
+- Verificador periódico de integridade e links quebrados (Dead link checker).
+- Extensão dedicada de navegador para Chromium e Firefox.
