@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { createMiddleware } from 'hono/factory';
+import { faviconRoute } from './routes/favicon';
 import { metadataRoute } from './routes/metadata';
 
 /** Rejects requests initiated by other sites (browser-sent `Sec-Fetch-Site: cross-site`). */
@@ -17,5 +18,6 @@ app.use('*', originFilter);
 app.get('/health', (c) => c.json({ status: 'ok' }));
 
 app.route('/metadata', metadataRoute);
+app.route('/favicon', faviconRoute);
 
 export default app;

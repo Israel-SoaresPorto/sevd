@@ -131,7 +131,7 @@
 - **Dependências:** T-021, T-022.
 - **Aceite (testes):** caminho feliz; timeout → `504`; URL privada → `403` tratado sem vazar detalhes internos; header de cache presente no sucesso e `no-store` nos erros.
 
-### [ ] T-024 — Rota `GET /api/favicon`
+### [ X ] T-024 — Rota `GET /api/favicon`
 - **Escopo:** `routes/favicon.ts` (A§7.5): guard com 3 saltos e 2 s; aceita `image/*` (ou `octet-stream` terminando em `.ico`); teto de 256 KB (excedeu → `404`); headers `Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'`, `X-Content-Type-Options: nosniff`, `Cache-Control: public, max-age=604800, s-maxage=2592000, immutable`; falha → `404` com `max-age=3600`.
 - **Dependências:** T-021.
 - **Aceite (testes):** SVG recebe CSP; > 256 KB → 404; `text/html` → 404; headers exatos.
