@@ -29,6 +29,9 @@ export default [
           Headers: "readonly",
           fetch: "readonly",
           AbortSignal: "readonly",
+          TextDecoder: "readonly",
+          TextEncoder: "readonly",
+          ReadableStream: "readonly",
         },
         parserOptions: {
           ecmaVersion: "latest",

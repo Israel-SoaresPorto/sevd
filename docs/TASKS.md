@@ -120,7 +120,7 @@
 - **Dependências:** T-020, T-011.
 - **Aceite (testes, com `fetch` mockado):** cada faixa bloqueada; redirect público→privado bloqueado; 6º salto aborta (metadata) e 4º (favicon); URL relativa em `Location` resolvida corretamente.
 
-### [ ] T-022 — Parser HTML em stream
+### [ X ] T-022 — Parser HTML em stream
 - **Escopo:** `lib/html-parser.ts` (A§7.4): valida `Content-Type`; lê até 65.536 bytes ou `</head>`; `reader.cancel()`; extrai `title` (og:title → twitter:title → `<title>`, decodifica entidades, ≤ 200) e `faviconUrl` (icon → shortcut icon → apple-touch-icon → `/favicon.ico`), sempre absoluta.
 - **Dependências:** T-020.
 - **Aceite (testes):** corte exato em 64 KB; para ao achar `</head>`; `Content-Type` não-HTML cancela o body; entidades (`&amp;`, `&#39;`) decodificadas; favicon relativo vira absoluto contra `finalUrl`; sem regex ingênua que quebre com atributos em ordem diferente.
