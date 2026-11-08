@@ -6,3 +6,6 @@ export * from './domain/errors';
 export * from './url-validator';
 export * from './url-normalizer';
 export * from './share-extractor';
+export * from './color-hash';
+export * from './text-search';
+export * from './utils/normalizers';

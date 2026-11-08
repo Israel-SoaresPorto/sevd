@@ -86,7 +86,7 @@
 - **Dependências:** T-010, T-011.
 - **Aceite (testes):** textos reais de YouTube/X/Chrome; `url` vazia + `text` com URL no meio; sem URL → resultado "inválido"; esquema não-http → inválido; nota truncada em 280.
 
-### [ ] T-014 — Busca de texto e cor determinística
+### [ X ] T-014 — Busca de texto e cor determinística
 - **Escopo:** `text-search.ts` (NFD, sem acentos, minúsculas; helper `matchesQuery`) e `color-hash.ts` (`getDeterministicColor(name)` → ColorToken **exceto `zinc`**).
 - **Refs:** RF-06, RF-12, RNF-4.
 - **Dependências:** T-010.
