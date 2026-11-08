@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { normalizeText } from "../../src/utils/normalizers";
+import { normalizeText, truncateText } from "../../src/utils/normalizers";
 
 describe('normalizeText', () => {
   it('remove acentos e converte para minúsculas', () => {
@@ -14,5 +14,15 @@ describe('normalizeText', () => {
     expect(normalizeText('')).toBe('');
     expect(normalizeText(null)).toBe('');
     expect(normalizeText(undefined)).toBe('');
+  });
+});
+
+describe('truncateText', () => {
+  it('não trunca texto menor ou igual ao limite', () => {
+    expect(truncateText('texto curto', 20)).toBe('texto curto');
+  });
+
+  it('trunca texto maior que o limite', () => {
+    expect(truncateText('texto muito longo que precisa ser truncado', 20)).toBe('texto muito longo qu');
   });
 });

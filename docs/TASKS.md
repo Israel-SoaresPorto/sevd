@@ -97,7 +97,7 @@
 - **Dependências:** T-010.
 - **Aceite (testes):** payload válido passa; `version: 2`, array ausente ou tipo errado falham com erro legível.
 
-### [ ] T-016 — Sanitizador e mesclagem LWW
+### [ X ] T-016 — Sanitizador e mesclagem LWW
 - **Objetivo:** estágios 2 e 3 do import, como funções **puras**.
 - **Escopo:** `backup-sanitizer.ts`: `sanitizePayload(payload) → { payload, report }` (descarta URL inválida, recalcula `normalizedUrl`/`domain`, trunca título/nota/nome, normaliza tags, cor/ícone desconhecidos → `zinc`/`Folder`) e `mergeBackup(local, imported) → { bookmarks, categories, categoryIdRemap, summary }`.
 - **Refs:** RF-18, A§5.2-C.

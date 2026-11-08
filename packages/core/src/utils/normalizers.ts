@@ -16,3 +16,17 @@ export function normalizeText(text: string | null | undefined): string {
     .replace(MULTIPLE_SPACES_REGEX, ' ')
     .trim();
 }
+
+/**
+ * Trunca texto para o comprimento máximo permitido, se necessário.
+ * @param text O texto a ser truncado.
+ * @param maxLength O comprimento máximo permitido.
+ * @returns O texto truncado, se necessário.
+ */
+export function truncateText(text: string, maxLength: number): string {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return text.slice(0, maxLength);
+}
