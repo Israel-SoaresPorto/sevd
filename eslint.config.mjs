@@ -21,6 +21,15 @@ export default [
       files: ["**/*.{ts,tsx}"],
       languageOptions: {
         parser: tseslint.parser,
+        globals: {
+          URL: "readonly",
+          URLSearchParams: "readonly",
+          Request: "readonly",
+          Response: "readonly",
+          Headers: "readonly",
+          fetch: "readonly",
+          AbortSignal: "readonly",
+        },
         parserOptions: {
           ecmaVersion: "latest",
           sourceType: "module",

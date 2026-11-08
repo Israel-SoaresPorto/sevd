@@ -4,6 +4,7 @@ export * from './domain/types';
 export * from './domain/constants';
 export * from './domain/errors';
 export * from './schemas/backup.schema';
+export * from './backup-sanitizer';
 export * from './utils/normalizers';
 export * from './utils/tags-normalizer';
 export * from './url-validator';

@@ -25,7 +25,7 @@ export function normalizeUrl(rawUrl: string): string {
   // Tenta criar um objeto URL a partir da URL bruta.
   try {
     url = new URL(rawUrl.trim());
-  } catch (err) {
+  } catch {
     throw new InvalidUrlError(`Failed to create URL: ${rawUrl}`);
   }
 
@@ -51,7 +51,7 @@ export function normalizeUrl(rawUrl: string): string {
 
   // Remoção de parâmetros de rastreamento
   const keysToRemove: string[] = [];
-  url.searchParams.forEach((_, key) => {
+  url.searchParams.forEach((_: any, key: string) => {
     const lowerKey = key.toLowerCase();
     if (TRACKING_SET.has(lowerKey) || lowerKey.startsWith(TRACKING_PARAM_PREFIX)) {
       keysToRemove.push(key);

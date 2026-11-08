@@ -8,7 +8,7 @@ export function isValidHttpUrl(rawUrl: string): boolean {
   try {
     const url = new URL(rawUrl.trim());
     return url.protocol === "http:" || url.protocol === "https:";
-  } catch (err) {
+  } catch {
     return false;
   }
 }
