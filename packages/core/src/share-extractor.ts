@@ -1,4 +1,4 @@
-import { LIMITS } from "./constants";
+import { LIMITS } from "./domain/constants";
 import { isValidHttpUrl } from "./url-validator";
 
 export interface ShareExtractorInput {

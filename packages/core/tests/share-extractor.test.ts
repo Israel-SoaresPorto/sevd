@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { LIMITS } from '../src/constants.js';
-import { extractShareTarget } from '../src/share-extractor.js';
+import { LIMITS } from '../src/domain/constants';
+import { extractShareTarget } from '../src/share-extractor';
 
 describe('extractShareTarget', () => {
   it('extrai compartilhamento direto do navegador (campo url válido e text como nota)', () => {

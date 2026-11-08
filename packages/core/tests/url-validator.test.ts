@@ -3,7 +3,7 @@ import {
   extractDomain,
   isValidHttpUrl,
 } from '../src/url-validator.js';
-import { InvalidUrlError } from '../src/errors.js';
+import { InvalidUrlError } from '../src/domain/errors.js';
 
 describe('isValidHttpUrl', () => {
   it('accepts valid URLs with http and https', () => {

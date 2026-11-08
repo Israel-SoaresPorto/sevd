@@ -1,4 +1,4 @@
-import { InvalidUrlError } from "./errors";
+import { InvalidUrlError } from "./domain/errors";
 
 export function isValidHttpUrl(rawUrl: string): boolean {
   if (!rawUrl || typeof rawUrl !== "string") {

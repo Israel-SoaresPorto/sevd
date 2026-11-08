@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { InvalidUrlError } from '../src/errors.js';
+import { InvalidUrlError } from '../src/domain/errors.js';
 import { normalizeUrl } from '../src/url-normalizer.js';
 
 describe('normalizeUrl', () => {

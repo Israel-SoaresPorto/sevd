@@ -1,5 +1,5 @@
-import { TRACKING_PARAM_EXACT_KEYS, TRACKING_PARAM_PREFIX } from "./constants";
-import { InvalidUrlError } from "./errors";
+import { TRACKING_PARAM_EXACT_KEYS, TRACKING_PARAM_PREFIX } from "./domain/constants";
+import { InvalidUrlError } from "./domain/errors";
 
 /**
  * Conjunto de parâmetros de rastreamento que devem ser removidos da URL.
