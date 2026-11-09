@@ -150,7 +150,7 @@
 
 ## FASE 3 — Dados e serviços (`@sevd/web`)
 
-### [ ] T-030 — Scaffold do app web
+### [ X ] T-030 — Scaffold do app web
 - **Escopo:** instalar Vite + React + TS + Tailwind + shadcn/ui + `lucide-react` + TanStack Router **sobre o `apps/web` criado na T-001, sem sobrescrevê-lo**, e criar 4 rotas placeholder (`/`, `/save`, `/categories`, `/settings`), cada uma em **chunk lazy** separado; `main.tsx` e `router.tsx`; fontes/ícones empacotados localmente (RNF-3).
 - **Método obrigatório (instalação manual, sem scaffolder):**
   1. `git commit` do estado atual. Dentro de `apps/web`: `pnpm add react react-dom @tanstack/react-router lucide-react`, `pnpm add -D vite @vitejs/plugin-react @types/react @types/react-dom` (e `tailwindcss @tailwindcss/vite`).

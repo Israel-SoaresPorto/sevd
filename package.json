@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preview": "pnpm --filter @sevd/web build && wrangler dev",
     "dev": "pnpm -r --parallel run dev",
     "dev:api": "wrangler dev",
+    "dev:web": "pnpm --filter @sevd/web dev",
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
     "typecheck": "pnpm -r run typecheck",
@@ -24,5 +26,11 @@
     "typescript-eslint": "^8.72.1",
     "vitest": "^5.1.0",
     "wrangler": "^4.158.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
   }
 }
